@@ -1,2 +1,4 @@
-import pygame
-from pygame.locals import *
+from app.controllers.app import app
+
+if __name__ == "__main__":
+    app()
