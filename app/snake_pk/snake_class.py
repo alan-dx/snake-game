@@ -7,7 +7,7 @@ class Snake:
         self.snake_size = [(200, 200), (210, 200), (220, 200)]
         self.snake_skin = pygame.Surface((10, 10))  # set size of pieace snake
 
-        self.snake_skin.fill((255, 255, 255))  # set fill of pieace snake
+        self.snake_skin.fill((255, 255, 255))  # set fill of snake pieace
 
     def move_up(self):
         self.snake_size[0] = (
@@ -33,6 +33,7 @@ class Snake:
         )
         return self
 
+    # Snake.movimentation() automatically adjusts the snake pieces
     def movimentation(self):
         for i in range(len(self.snake_size) - 1, 0, -1):
             # makes the snake movimentation

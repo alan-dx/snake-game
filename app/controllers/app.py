@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from app.snake_pk.snake_class import Snake
 from app.apple_pk.apple_class import Apple
+from app.controllers.end_of_screen import end_of_screen
 
 pygame.init()
 screen = pygame.display.set_mode((600, 600))
@@ -55,7 +56,12 @@ def app():
 
         if (apple.pos == snake.snake_size[0]):
             apple.new_pos()
+            # Snake.movimentation() automatically adjusts the snake pieces
             snake.snake_size.append((0, 0))
+
+        # end of screen verificator
+        end_of_screen(snake)
+        # end of screen verificator
 
         snake.movimentation()
 
