@@ -3,6 +3,7 @@ from pygame.locals import *
 from app.snake_pk.snake_class import Snake
 from app.apple_pk.apple_class import Apple
 from app.controllers.end_of_screen import end_of_screen
+from app.controllers.collision import collision
 
 pygame.init()
 screen = pygame.display.set_mode((600, 600))
@@ -63,9 +64,14 @@ def app():
         end_of_screen(snake)
         # end of screen verificator
 
+        # colision verificator
+        collision(snake.snake_size)
+        # colision verificator
+
         snake.movimentation()
 
-        screen.fill((0, 0, 0))  # clean the screen every time
+        # clear the screen and then print the new position of the elements
+        screen.fill((0, 0, 0))
 
         screen.blit(apple.apple_skin, apple.pos)
         for pos in snake.snake_size:
