@@ -1,4 +1,4 @@
-import pygame
+import pygame_menu
 
 
 def collision(snake_size):
@@ -7,6 +7,5 @@ def collision(snake_size):
         if (snake_size[0] == segment):
             # i will make alert box using pgu module in future
             # to show a game over alert
-            pygame.quit()
             print('=============== GAME OVER ===============')
             # pygame.display.flip()

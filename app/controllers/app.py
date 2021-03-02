@@ -1,81 +1,97 @@
 import pygame
+import pygame_menu
 from pygame.locals import *
 from app.snake_pk.snake_class import Snake
 from app.apple_pk.apple_class import Apple
 from app.controllers.end_of_screen import end_of_screen
 from app.controllers.collision import collision
 
-pygame.init()
-screen = pygame.display.set_mode((600, 600))
-pygame.display.set_caption('Snake Game')
-
-# directions keys
-UP = 0
-RIGHT = 1
-DOWN = 2
-LEFT = 3
-# directions keys
-
-snake = Snake()
-apple = Apple()
-
-
-clock = pygame.time.Clock()
-
 
 def app():
-    my_direction = LEFT  # initial direction
-    while True:
+    # the app function was created just for a better understanding of the code
+    # when import this file on game file
 
-        clock.tick(15)  # set frame rate
+    # pygame
+    pygame.init()
+    screen = pygame.display.set_mode((600, 600))
+    pygame.display.set_caption('Snake Game')
+    # pygame
 
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
+    # directions keys
+    UP = 0
+    RIGHT = 1
+    DOWN = 2
+    LEFT = 3
+    # directions keys
 
-            if event.type == KEYDOWN:
-                if event.key == K_UP:
-                    my_direction = UP
-                elif event.key == K_DOWN:
-                    my_direction = DOWN
-                elif event.key == K_RIGHT:
-                    my_direction = RIGHT
-                elif event.key == K_LEFT:
-                    my_direction = LEFT
+    snake = Snake()
+    apple = Apple()
 
-        if my_direction == UP:
-            snake.move_up()
+    clock = pygame.time.Clock()
 
-        if my_direction == DOWN:
-            snake.move_down()
+    def start_the_game():
+        my_direction = LEFT  # initial direction
 
-        if my_direction == RIGHT:
-            snake.move_right()
+        while True:
 
-        if my_direction == LEFT:
-            snake.move_left()
+            clock.tick(15)  # set frame rate
 
-        if (apple.pos == snake.snake_size[0]):
-            apple.new_pos()
-            # Snake.movimentation() automatically adjusts the snake pieces
-            snake.snake_size.append((0, 0))
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    pygame.quit()
 
-        # end of screen verificator
-        end_of_screen(snake)
-        # end of screen verificator
+                if event.type == KEYDOWN:
+                    if event.key == K_UP:
+                        my_direction = UP
+                    elif event.key == K_DOWN:
+                        my_direction = DOWN
+                    elif event.key == K_RIGHT:
+                        my_direction = RIGHT
+                    elif event.key == K_LEFT:
+                        my_direction = LEFT
 
-        # colision verificator
-        collision(snake.snake_size)
-        # colision verificator
+            if my_direction == UP:
+                snake.move_up()
 
-        snake.movimentation()
+            if my_direction == DOWN:
+                snake.move_down()
 
-        # clear the screen and then print the new position of the elements
-        screen.fill((0, 0, 0))
+            if my_direction == RIGHT:
+                snake.move_right()
 
-        screen.blit(apple.apple_skin, apple.pos)
-        for pos in snake.snake_size:
-            # prints the snake on indicated position
-            screen.blit(snake.snake_skin, pos)
+            if my_direction == LEFT:
+                snake.move_left()
 
-        pygame.display.update()
+            if (apple.pos == snake.snake_size[0]):
+                apple.new_pos()
+                # Snake.movimentation() automatically adjusts the snake pieces
+                snake.snake_size.append((0, 0))
+
+            # end of screen verificator
+            end_of_screen(snake)
+            # end of screen verificator
+
+            # colision verificator
+            collision(snake.snake_size)
+            # colision verificator
+
+            snake.movimentation()
+
+            # clear the screen and then print the new position of the elements
+            screen.fill((0, 0, 0))
+
+            screen.blit(apple.apple_skin, apple.pos)
+            for pos in snake.snake_size:
+                # prints the snake on indicated position
+                screen.blit(snake.snake_skin, pos)
+
+            pygame.display.update()
+
+    # pygame_menu
+    menu = pygame_menu.Menu(
+        300, 300, 'Bem-vindo(a)', theme=pygame_menu.themes.THEME_DARK)
+    menu.add_button('Play', start_the_game)
+    menu.add_button('Quit', pygame_menu.events.EXIT)
+
+    menu.mainloop(screen)
+    # pygame_menu
