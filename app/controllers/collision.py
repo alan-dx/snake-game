@@ -1,6 +1,3 @@
-import pygame_menu
-
-
 def collision(snake_size):
     # event function
     for segment in snake_size[1:]:
@@ -9,4 +6,6 @@ def collision(snake_size):
             # i will make alert box using pgu module in future
             # to show a game over alert
             print('=============== GAME OVER ===============')
+            return True
+            break
             # pygame.display.flip()

@@ -73,7 +73,12 @@ def app():
             # end of screen verificator
 
             # colision verificator
-            collision(snake.snake_size)
+            if collision(snake.snake_size):
+                snake.reset_snake_size()  # the position of this line is very important
+                # put it below of menu.show_menu() cause bugs
+                # since snake.reset_snake_size() will not be called
+                menu.show_menu(True)
+                break
             # colision verificator
 
             snake.movimentation()
@@ -88,17 +93,6 @@ def app():
 
             pygame.display.update()
 
-    menu = Menu(start_the_game)
+    menu = Menu(start_the_game, screen)
 
-    menu.show_menu(screen)
-    # pygame_menu
-    # def show_menu():
-    #     # COLOCAR O ABRIR MENU AQUI DENTRO PARA CONTROLAR QUANDO DEVE OU NÃO ABRIR
-    #     pass
-    # menu = pygame_menu.Menu(
-    #     300, 300, 'Bem-vindo(a)', theme=pygame_menu.themes.THEME_DARK)
-    # menu.add_button('Play', start_the_game)
-    # menu.add_button('Quit', pygame_menu.events.EXIT)
-
-    # menu.mainloop(screen)
-    # pygame_menu
+    menu.show_menu()
