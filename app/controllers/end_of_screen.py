@@ -1,4 +1,6 @@
 def end_of_screen(snake):
+    # event function
+
     # end of screen
     if (snake.snake_size[0][0] == 0):  # x axis (0,y)
         # snake.movimentation() will automatically adjusts the snake pieces

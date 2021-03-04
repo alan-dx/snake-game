@@ -3,6 +3,7 @@ import pygame_menu
 from pygame.locals import *
 from app.snake_pk.snake_class import Snake
 from app.apple_pk.apple_class import Apple
+from app.menu_pk.menu_class import Menu
 from app.controllers.end_of_screen import end_of_screen
 from app.controllers.collision import collision
 
@@ -87,11 +88,17 @@ def app():
 
             pygame.display.update()
 
-    # pygame_menu
-    menu = pygame_menu.Menu(
-        300, 300, 'Bem-vindo(a)', theme=pygame_menu.themes.THEME_DARK)
-    menu.add_button('Play', start_the_game)
-    menu.add_button('Quit', pygame_menu.events.EXIT)
+    menu = Menu(start_the_game)
 
-    menu.mainloop(screen)
+    menu.show_menu(screen)
+    # pygame_menu
+    # def show_menu():
+    #     # COLOCAR O ABRIR MENU AQUI DENTRO PARA CONTROLAR QUANDO DEVE OU NÃO ABRIR
+    #     pass
+    # menu = pygame_menu.Menu(
+    #     300, 300, 'Bem-vindo(a)', theme=pygame_menu.themes.THEME_DARK)
+    # menu.add_button('Play', start_the_game)
+    # menu.add_button('Quit', pygame_menu.events.EXIT)
+
+    # menu.mainloop(screen)
     # pygame_menu
