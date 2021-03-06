@@ -35,10 +35,11 @@ def app():
 
     def start_the_game():
         my_direction = LEFT  # initial direction
+        frame_rate = 10
 
         while True:
-
-            clock.tick(15)  # set frame rate
+            # set frame rate, cause a limitation on while
+            clock.tick(frame_rate)
 
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -67,7 +68,8 @@ def app():
                 snake.move_left()
 
             # apple collected verificator
-            apple_collected(snake, apple, player)
+            frame_rate = apple_collected(  # primitive type of python isn't OOP
+                snake, apple, player, frame_rate, clock)
             # apple collected verificator
 
             # end of screen verificator
