@@ -5,8 +5,9 @@ from app.snake_pk.snake_class import Snake
 from app.apple_pk.apple_class import Apple
 from app.menu_pk.menu_class import Menu
 from app.player_pk.player_class import Player
-from app.controllers.end_of_screen import end_of_screen
-from app.controllers.collision import collision
+from app.events.end_of_screen import end_of_screen
+from app.events.collision import collision
+from app.events.apple_collected import apple_collected
 
 
 def app():
@@ -65,25 +66,16 @@ def app():
             if my_direction == LEFT:
                 snake.move_left()
 
-            if (apple.pos == snake.snake_size[0]):
-                # to do: create a function for when the apple was collected
-                apple.new_pos()
-                player.increase_score()
-                # Snake.movimentation() automatically adjusts the snake pieces
-                snake.snake_size.append((0, 0))
+            # apple collected verificator
+            apple_collected(snake, apple, player)
+            # apple collected verificator
 
             # end of screen verificator
             end_of_screen(snake)
             # end of screen verificator
 
             # colision verificator
-            if collision(snake.snake_size):
-                print(player)
-                snake.reset_snake_size()  # the position of this line is very important
-                # put it below of menu.show_menu() cause bugs
-                # since snake.reset_snake_size() will not be called
-                menu.show_menu(True)
-                break
+            collision(snake, menu, player)
             # colision verificator
 
             snake.movimentation()
