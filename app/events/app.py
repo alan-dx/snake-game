@@ -35,7 +35,7 @@ def app():
 
     def start_the_game():
         my_direction = LEFT  # initial direction
-        frame_rate = 10
+        frame_rate = 11
 
         while True:
             # set frame rate, cause a limitation on while
