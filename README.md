@@ -8,7 +8,7 @@ The purpose of the project is to be a learning environment, in which i try to be
 
 ## Future updates
 
-- [ ] Install the PGU module to create a menu and show alerts;
+- [x] Install the pygame_menu module to create a menu and show alerts;
 - [ ] Create a scoring system, increase difficulty by earning points and offline multiplayer;
 
 ## Installing
@@ -31,7 +31,7 @@ O propósito do projeto é ser um ambiente de aprendizado, no qual procuro enten
 
 ## Atualizações futuras
 
-- [ ] Instal o módulo PGU para criar menu e mostrar alertas;
+- [x] Instal o módulo pygame_menu para criar menu e mostrar alertas;
 - [ ] Criar um sistema de pontuação, aumentar a dificuldade ao ganhar pontos e um sistema de multiplayer offline;
 
 ## Instalação
