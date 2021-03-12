@@ -7,4 +7,4 @@ class Player():
         self.player_score += 1
 
     def __str__(self):
-        return f'\n ========= Name: {self.player_name} | Score: {self.player_score} ========='
+        return f'{self.player_score}'
