@@ -8,6 +8,7 @@ from app.player_pk.player_class import Player
 from app.events.end_of_screen import end_of_screen
 from app.events.collision import collision
 from app.events.apple_collected import apple_collected
+from app.database.create_table import create_table
 
 
 def app():
@@ -20,6 +21,10 @@ def app():
     pygame.display.set_caption('Snake Game')
     # pygame
 
+    # database - create table
+    create_table()
+    # database - create table
+
     # directions keys
     UP = 0
     RIGHT = 1
@@ -27,7 +32,8 @@ def app():
     LEFT = 3
     # directions keys
 
-    snake = Snake()
+    snake = Snake([(200, 200), (210, 200), (220, 200)])
+
     apple = Apple()
     player = Player('Player')
 

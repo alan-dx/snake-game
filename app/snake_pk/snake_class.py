@@ -3,8 +3,8 @@ import pygame
 
 class Snake:
 
-    def __init__(self):
-        self.snake_size = [(200, 200), (210, 200), (220, 200)]
+    def __init__(self, init_position):
+        self.snake_size = init_position
         self.snake_skin = pygame.Surface((10, 10))  # set size of pieace snake
 
         self.snake_skin.fill((255, 255, 255))  # set fill of snake pieace
