@@ -35,13 +35,13 @@ def app():
     snake = Snake([(200, 200), (210, 200), (220, 200)])
 
     apple = Apple()
-    player = Player('Player')
 
     clock = pygame.time.Clock()
 
     def start_the_game():
         my_direction = LEFT  # initial direction
         frame_rate = 11
+        player = Player(menu.get_player_name())
 
         while True:
             # set frame rate, cause a limitation on while

@@ -42,6 +42,5 @@ class Snake:
             )
 
     def reset_snake_size(self):
-        print('resetou')
         # reset the snake_size when an colission ocurred
         self.snake_size = [(200, 200), (210, 200), (220, 200)]

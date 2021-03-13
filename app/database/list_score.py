@@ -7,7 +7,7 @@ def list_score():
         try:
             connect.row_factory = Row
             cursor = connect.cursor()
-            cursor.execute("SELECT * FROM users")
+            cursor.execute("SELECT * FROM users ORDER BY score desc")
             users = cursor.fetchall()
         except OperationalError as err:
             print(f'\n {err}')

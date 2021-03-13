@@ -7,8 +7,6 @@ def collision(snake, menu, player):
         # print(segment)
         if (snake.snake_size[0] == segment):
             print('=============== GAME OVER ===============')
-            print('fas', player)
-            print(menu.get_player_name()['name_input'])
             add_user_on_table(menu.get_player_name()[
                               'name_input'], str(player))
             snake.reset_snake_size()  # the position of this line is very important
