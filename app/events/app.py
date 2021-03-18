@@ -9,6 +9,7 @@ from app.events.end_of_screen import end_of_screen
 from app.events.collision import collision
 from app.events.apple_collected import apple_collected
 from app.database.create_table import create_table
+from app.utils.draw_text import draw_text
 
 
 def app():
@@ -40,8 +41,9 @@ def app():
 
     def start_the_game():
         my_direction = LEFT  # initial direction
-        frame_rate = 11
+        frame_rate = 11  # primitive type of python isn't OOP
         player = Player(menu.get_player_name())
+        # draw_text(screen, '0', 18, 300, 300)
 
         while True:
             # set frame rate, cause a limitation on while
@@ -75,7 +77,7 @@ def app():
 
             # apple collected verificator
             frame_rate = apple_collected(  # primitive type of python isn't OOP
-                snake, apple, player, frame_rate, clock)
+                snake, apple, player, frame_rate, clock, screen)
             # apple collected verificator
 
             # end of screen verificator
@@ -90,6 +92,9 @@ def app():
 
             # clear the screen and then print the new position of the elements
             screen.fill((0, 0, 0))
+
+            draw_text(
+                screen, f'{player.get_name()} | {player.player_score}', 18, 300, 20)
 
             screen.blit(apple.apple_skin, apple.pos)
             for pos in snake.snake_size:
